@@ -40,8 +40,8 @@ train = [
     "deepspeed==0.12.2",
     "peft==0.4.0",
     "accelerate>=0.31.0",
-    "tokenizers~=0.15.2",
-    "transformers@git+https://github.com/huggingface/transformers.git@1c39974a4c4036fd641bc1191cc32799f85715a4",
+    "tokenizers==0.19.1",
+    "transformers==4.42.1",
     "bitsandbytes==0.41.0",
     "scikit-learn==1.2.2",
     "sentencepiece~=0.1.99",
@@ -56,7 +56,9 @@ train = [
     "tyro",
     "scipy",
     "rouge",
-    "urllib3<=2.0.0"
+    "urllib3<=2.0.0",
+    "wheel",
+    "tensorboardx"
 ]
 
 [project.urls]

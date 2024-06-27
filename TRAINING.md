@@ -1,3 +1,14 @@
+## INSTALLATION
+
+```
+pip install -e .
+pip install -e .[train]
+pip install flash-attn --no-build-isolation --no-cache-dir
+```
+
+## TRAINING
+
+
 ```
 python llava/train/train_mem.py \
     --lora_enable True --lora_r 32 --lora_alpha 32 --mm_projector_lr 2e-5 \
