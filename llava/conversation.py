@@ -44,7 +44,7 @@ class Conversation:
 
     skip_next: bool = False
 
-    def get_prompt(self):
+    def get_prompt(self, add_generation_prompt=True):
         messages = self.messages
         if len(messages) > 0 and type(messages[0][1]) is tuple:
             messages = self.messages.copy()
@@ -104,7 +104,7 @@ class Conversation:
                     chat_template_messages.append({"role": role, "content": message})
 
             # print(chat_template_messages)
-            return self.tokenizer.apply_chat_template(chat_template_messages, tokenize=False, add_generation_prompt=True)
+            return self.tokenizer.apply_chat_template(chat_template_messages, tokenize=False, add_generation_prompt=add_generation_prompt)
             # ret = "" if self.system == "" else self.system + self.sep + "\n"
             # for role, message in messages:
             #     if message:
@@ -348,8 +348,12 @@ conv_llava_llama_2 = Conversation(
     sep2="</s>",
 )
 
+#llama3_repo="meta-llama/Meta-Llama-3-8B-Instruct"
+#llama3_repo="NousResearch/Meta-Llama-3-8B-Instruct"
+llama3_repo="/hdd_0/user/ML/LLM/Meta-Llama-3-8B-Instruct/"
+
 try:
-    llama3_tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct")
+    llama3_tokenizer = AutoTokenizer.from_pretrained(llama3_repo)
 except Exception as e:
     print("Error loading llama3 tokenizer")
     print(e)
@@ -361,7 +365,7 @@ conv_llava_llama_3 = Conversation(
     messages=[],
     offset=0,
     sep_style=SeparatorStyle.LLAMA_3,
-    tokenizer_id="meta-llama/Meta-Llama-3-8B-Instruct",
+    tokenizer_id=llama3_repo,
     tokenizer=llama3_tokenizer,
     stop_token_ids=[128009],
 )

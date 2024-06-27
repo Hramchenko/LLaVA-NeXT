@@ -46,3 +46,5 @@ scripts/dist_*
 logs/
 submissions/
 # work_dirs
+
+.venv
