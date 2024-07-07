@@ -3,7 +3,7 @@ import sys
 sys.path.append(".")
 
 
-from llava.model.builder import load_pretrained_model_my
+from llava.model.builder import load_pretrained_lama3
 from llava.mm_utils import get_model_name_from_path, process_images, tokenizer_image_token
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN, IGNORE_INDEX
 from llava.conversation import conv_templates, SeparatorStyle
@@ -18,7 +18,7 @@ pretrained = "/hdd_0/user/ML/LLM/llama3-llava-next-8b"
 model_name = "llava_llama3_lora"
 device = "cuda"
 device_map = "auto"
-tokenizer, model, image_processor, max_length = load_pretrained_model_my("/home/user/ML/LLM/LLaVA-NeXT/checkpoints/llava-llama3-animals/checkpoint-100", "/hdd_0/user/ML/LLM/llama3-llava-next-8b", model_name, device_map=device_map) # Add any other thing you want to pass in llava_model_args
+tokenizer, model, image_processor, max_length = load_pretrained_lama3("/home/user/ML/LLM/LLaVA-NeXT/checkpoints/llava-llama3-animals/checkpoint-100", "/hdd_0/user/ML/LLM/llama3-llava-next-8b", model_name, device_map=device_map) # Add any other thing you want to pass in llava_model_args
 
 model.eval()
 model.tie_weights()
